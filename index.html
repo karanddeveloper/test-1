@@ -59,15 +59,21 @@
     });
 
     document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('delete-btn')) {
-      var taskItem = e.target.parentElement;
-      if (taskItem.parentElement.id === 'todoList') {
-        removed.appendChild(taskItem);
-      } else if (taskItem.parentElement.id === 'removed') {
-        taskItem.remove();
-      }
+  if (e.target.classList.contains('delete-btn')) {
+    var taskItem = e.target.parentElement;
+
+    if (taskItem.parentElement.id === 'todoList') {  
+      removed.appendChild(taskItem);
+      changeButtonName(taskItem.querySelector('.delete-btn'), 'Remove Permanently');
+    } else if (taskItem.parentElement.id === 'removed') {
+      taskItem.remove();
     }
-  });
+  }
+});
+
+function changeButtonName(buttonElement, newName) {
+  buttonElement.textContent = newName;
+}
 
   </script>
 </body>
