@@ -59,11 +59,15 @@
     });
 
     document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('delete-btn')) {
-        e.target.parentElement.remove();
-        removed.appendChild(e.target.parentElement);
+    if (e.target.classList.contains('delete-btn')) {
+      var taskItem = e.target.parentElement;
+      if (taskItem.parentElement.id === 'todoList') {
+        removed.appendChild(taskItem);
+      } else if (taskItem.parentElement.id === 'removed') {
+        taskItem.remove();
       }
-    });
+    }
+  });
 
   </script>
 </body>
